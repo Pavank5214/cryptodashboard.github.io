@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .bg-image{
+        height: 100vh;
+        width: 100%;
+        background-image: url(https://smarative.com/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1519614218660-ea0a24a43b4c%3Fcrop%3Dentropy%26cs%3Dtinysrgb%26fit%3Dmax%26fm%3Djpg%26ixid%3DM3wxMTc3M3wwfDF8c2VhcmNofDExfHxvdmVybGF5JTIwbGF5ZXJ8ZW58MHx8fHwxNjg3OTk5MjY4fDA%26ixlib%3Drb-4.0.3%26q%3D80%26w%3D2000&w=3840&q=75);
+       
+        animation: color 12s ease-in-out infinite;
+    }
+    
+    
+    
+    
+    
+    .select-option{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 120px;
+    left: 80%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 305px;
+    padding: 10px 20px;
+    font-family: 'poppins',sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    background: rgb(172, 161, 161);
+    border-radius: 10px;
+    
+} 
+.option-selected{
+    display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+}
+.selected-option{
+    text-align: center;
+    padding-top: 3px;
+    font-family: 'poppins',sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    width: 300px;
+    height: 50px;
+    margin-top: 23px;
+    
+
+    background:linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+}
+.card-body{
+    text-align: center;
+    padding-top: 10px;
+    font-family: 'poppins',sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    align-items: center;
+    width: 200px;
+    height: 130px;
+    margin: 20px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+}
+.iflex{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+.text-color{
+    font-family: 'poppins',sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    color: rgb(0, 177, 190);
+    padding-top: 10px;
+}
+.text-color1{
+    font-family: 'poppins',sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    color: rgb(0, 202, 47);
+    padding-top: 40px;
+}
+.text-color2{
+    font-family: 'poppins',sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    color: rgb(0, 202, 47);
+    padding-top: 40px;
+}
+.text-color3{
+    font-family: 'poppins',sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    color: rgb(231, 0, 0);
+    padding-top: 40px;
+}
+.current-text-center{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+.price-text-center{
+    
+    width: 440px;
+height: 130px;
+text-align: center;
+font-family: 'poppins',sans-serif;
+ font-weight: 600;
+ font-size: 50px;
+ color: rgb(136, 14, 14);
+background:linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border-radius: 20px;
+border: 1px solid rgba(255,255,255,0.18);
+box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+}
+.live-data{
+    text-align: center;
+font-family: 'poppins',sans-serif;
+ font-weight: 600;
+ font-size: 50px;
+ color: rgb(0, 177, 190);
+}
+.card-body1{
+    width: 200px;
+ height: 70px;
+ 
+ margin: 14px;
+ background:linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
+ backdrop-filter: blur(10px);
+ -webkit-backdrop-filter: blur(10px);
+ border-radius: 20px;
+ border: 1px solid rgba(255,255,255,0.18);
+ box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    margin-left: 765px;
+    margin-top: -480px;
+}
+.card-title{
+    text-align: center;
+font-family: 'poppins',sans-serif;
+ font-weight: 600;
+ font-size: 20px;
+ color: rgb(159, 3, 3);
+}
+.card-text {
+    text-align: center;
+font-family: 'poppins',sans-serif;
+ font-weight: 600;
+ font-size: 20px;
+ color: rgb(228, 240, 0);
+}
+#chart1{
+    width: 600px;
+    margin-left: 100px;
+    margin-top: 50px;
+    height: 470px;
+    padding-top: 50px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border-radius: 20px;
+border: 1px solid rgba(255,255,255,0.18);
+box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+}
+#chart2{
+    
+    width: 300px;
+    margin-left: 1070px;
+    margin-top: -470px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border-radius: 20px;
+border: 1px solid rgba(255,255,255,0.18);
+box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+}
+#chart3{
+    
+    width: 300px;
+    margin-left: 1070px;
+    margin-top: 20px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border-radius: 20px;
+border: 1px solid rgba(255,255,255,0.18);
+box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+}
+.box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.container{
+    width: 100%;
+    height: 90vh;
+    margin-top: 20px;
+    background: #001660;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form1{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 2vw 4vw;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+.form1 h3{
+color: #555;
+font-weight: 800;
+margin-bottom: 20px;
+}
+.form1 input{
+  border: 0;
+  margin: 10px 0;
+  padding: 20px;
+  background: #f5f5ff;
+  font-size: 16px;
+}
+.form1 button{
+    padding: 15px;
+    background-color: #ff5361;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    margin: 20px auto 0;
+    border-radius: 30px;
+}
+.text-color4{
+    font-family: 'poppins',sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    color: rgb(202, 0, 0);
+    padding-top: 40px;
+}
+    </style>
+</head>
+<body class="bg-image">
+   
+   
+   
+    <div class="mask gradient-custom">
+
+        
+            <div class="container-fluid">
+
+                <form method="post">
+                    <select class="select-option" aria-label=".form-select-lg example" name='selectCoin'
+                         onchange='this.form.submit()'>
+                        <option>Select Coin</option>
+                        <option value="avalanche">Avalanche (AVAX)</option>
+                        <option value="binancecoin">Binance (BNB)</option>
+                        <option value="bitcoin">Bitcoin (BTC) </option>
+                        <option value="cardano">Cardano (ADA)</option>
+                        <option value="decentraland">Decentraland (MANA)</option>
+                        <option value="dogecoin">Dogecoin (DOGE)</option>
+                        <option value="ethereum">Ethereum (ETH)</option>
+                        <option value="ripple">Ripple (XRP)</option>
+                        <option value="solana">Solana (SOL)</option>
+                        <option value="tether">Tether (USDT)</option>
+                        <option value="litecoin">Litecoin (LTC)</option>
+                        
+                    </select>
+                </form>
+
+            </div>
+        
+<div class="option-selected">
+        <div class="selected-option">
+            <%- mData.name %>
+        </div>
+    </div>
+
+        <section class="row m-3 mb-0">
+            <div class="iflex">
+            
+                <div class="card-body">
+                    <h6>Market Cap 24Hrs</h6>
+                    <p class="text-color">
+                        <%- mData.market_data.market_cap_change_percentage_24h %> %
+                    </p>
+                </div>
+           
+           
+           
+                <div class="card-body">
+                    <h6>All Time High</h6>
+                    <p class="text-color1">
+                        $ <%- mData.market_data.ath.usd %>
+                    </p>
+                </div>
+            
+            
+            
+                <div class="card-body">
+                    <h6>All Time Low</h6>
+                    <p class="text-color4">
+                        $ <%- mData.market_data.atl.usd %>
+                    </p>
+                </div>
+            
+
+            
+            
+                <div class="card-body">
+                    <h6>Positive Sentiments </h6>
+                    <p class="text-color" >
+                        <%- mData.sentiment_votes_up_percentage %> %
+                    </p>
+                </div>
+            
+            
+            
+                <div class="card-body">
+                    <h6> High 24Hrs </h6>
+                    <p class="text-color2" >
+                        $ <%- mData.market_data.high_24h["usd"] %>
+                    </p>
+                </div>
+            
+            
+            
+                <div class="card-body">
+                    <h6 > Low 24Hrs </h6>
+                    <p class="text-color3" >
+                        $ <%- mData.market_data.low_24h["usd"] %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        </section>
+        <div>
+            <div class="current-text-center"> 
+                
+            <div class="price-text-center">CURRENT
+                <div class="live-data">
+                $<%- mData.market_data.current_price.usd %>
+            </div>
+            </div>
+        </div>
+
+
+<div class="box">
+
+                <div class="col" id="chart1"></div>
+               
+<div class="container2">
+                    <div class="card-body1 ">
+                        <h6 class="card-title"> Market Cap </h6>
+                        <p class="card-text">
+                            $ <%- mData.market_data.market_cap.usd %>
+                        </p>
+                    </div>
+
+                    <div class="card-body1 ">
+                        <h6 class="card-title"> Price Change 24hrs </h6>
+                        <p class="card-text">
+                            $ <%- mData.market_data.price_change_24h_in_currency.usd %>
+                        </p>
+                    </div>
+                    <div class="card-body1">
+                        <h6 class="card-title"> Total Volume </h6>
+                        <p class="card-text">
+                            $ <%- mData.market_data.total_volume.usd %>
+                        </p>
+                    </div>
+                    <div class="card-body1 ">
+                        <h6 class="card-title"> Circulating Supply</h6>
+                        <p class="card-text">
+                            <%- mData.market_data["circulating_supply"] %>
+                        </p>
+                    </div>
+                    <div class="card-body1 ">
+                        <h6 class="card-title"> Twitter Followers</h6>
+                        <p class="card-text">
+                            <%= mData.community_data.twitter_followers %>
+                        </p>
+                    </div>
+
+                </div>
+
+
+                
+            
+                
+                    <div id="chart2"></div>
+                    <div id="chart3"></div>
+                
+
+                </div>
+   
+                <div class="container">
+                    <form class="form1" action="https://formsubmit.co/youremail@gmail.com" method="POST">
+                        <h3>GET IN TOUCH</h3>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Email id" required>
+                        <input type="number" name="phone" placeholder="phone no." required>
+                        <button type="submit">Send</button>
+                    </form>
+            
+                </div>
+            
+   
+        <script>
+            let mPriceData = '<%- JSON.stringify(mChart.prices) %>'
+            mPriceData = String(mPriceData)
+            mPriceData = JSON.parse(mPriceData)
+            var options = {
+                chart: {
+                    height: 400,
+                    width: 600,
+                    type: 'area'
+                },
+                grid: {
+                    show: false
+                },
+                title: {
+                    text: "Market Price (USD)",
+                    style: {
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        color: '#00ffea'
+                    }
+                },
+                stroke: {
+                    curve: 'smooth'
+                },
+                series: [{
+                    name: 'Market Price',
+                    data: mPriceData
+
+                }
+                ],
+
+                xaxis: {
+                    type: "datetime"
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                yaxis: {
+                    show: false
+                },
+                colors: ["#00ffea", "#00ffea"],
+                tooltip: {
+                    y: {
+                        formatter: (value) => { return value.toFixed(2) }
+                    },
+                    theme: "dark"
+                }
+            }
+
+            var chart = new ApexCharts(document.querySelector("#chart1"), options);
+
+            chart.render();
+        </script>
+        <script>
+            let mCapData = '<%- JSON.stringify(mChart.market_caps) %>'
+            mCapData = String(mCapData)
+            mCapData = JSON.parse(mCapData)
+            var options = {
+                chart: {
+                    height: 200,
+                    width: 300,
+                    type: 'line'
+                },
+                grid: {
+                    show: false
+                },
+                theme: {
+                    mode: 'dark'
+                },
+                series: [{
+                    name: 'Market Cap (USD)',
+                    data: mCapData,
+                }
+                ],
+                xaxis: {
+                    type: "datetime"
+                }, dataLabels: {
+                    enabled: false
+                },
+                theme: {
+                    mode: 'light',
+                    palette: 'palette1',
+                    monochrome: {
+                        enabled: false,
+                        color: '#255aee',
+                        shadeTo: 'light',
+                        shadeIntensity: 0.65
+                    },
+                }
+                ,
+                title: {
+                    text: "Market Cap (USD)",
+                    style: {
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        color: '#ff69f5'
+                    }
+                },
+                yaxis: [{
+                    show: false,
+                }
+                ],
+                colors: ["#ff69f5"],
+                tooltip: {
+                    y: {
+                        formatter: function (val) {
+                            return val
+                        }
+                    },
+                    theme: "dark"
+                }
+            }
+
+            var chart = new ApexCharts(document.querySelector("#chart2"), options);
+
+            chart.render();
+        </script>
+        <script>
+            let mVolData = '<%- JSON.stringify(mChart.total_volumes) %>'
+            mVolData = String(mVolData)
+            mVolData = JSON.parse(mVolData)
+            var options = {
+                chart: {
+                    height: 200,
+                    width: 300,
+                    type: 'line'
+                },
+                theme: {
+                    mode: 'dark'
+                },
+                grid: {
+                    show: false
+                },
+                title: {
+                    text: "Market Volume",
+                    style: {
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        color: '#ffff00'
+                    }
+                },
+                series: [{
+                    name: 'Market Volume',
+                    data: mVolData,
+                }
+                ],
+                xaxis: {
+                    type: "datetime"
+                },
+                dataLabels: {
+                    enabled: false
+                },
+
+                yaxis: [{
+                    show: false,
+                }
+                ],
+                theme: {
+                    mode: 'light',
+                    palette: 'palette1',
+                    monochrome: {
+                        enabled: false,
+                        color: '#ffffff',
+                        shadeTo: 'light',
+                        shadeIntensity: 0.65
+                    }
+                },
+                colors: ["#ffff00"],
+                tooltip: {
+                    y: {
+                        formatter: function (val) {
+                            return val
+                        }
+                    },
+                    theme: "dark"
+                }
+            }
+
+            var chart = new ApexCharts(document.querySelector("#chart3"), options);
+
+            chart.render();
+        </script>
+</body>
+
+</html>
